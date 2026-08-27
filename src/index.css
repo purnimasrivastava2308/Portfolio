@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --bg-deep: #05060C;
+  --bg-primary: #070812;
+  --bg-secondary: #0B0D19;
+  --text-main: #F2F0EA;
+  --text-secondary: #A8A8B7;
+  --text-muted: #6F7180;
+  --accent-blue: #8FA8FF;
+  --accent-lavender: #B6A1D9;
+  --accent-warm: #D8C7B5;
+  --accent-light: #F7F5EF;
+}
+
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top, rgba(182, 161, 217, 0.12), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(143, 168, 255, 0.12), transparent 30%),
+    linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: "Manrope", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  color: var(--text-secondary);
+}
+
+a {
+  transition: color 0.3s ease, opacity 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(182, 161, 217, 0.25);
+}
+
+.editorial-serif {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.ambient-panel {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(5, 6, 12, 0.35);
+}
+
+.living-data-universe {
+  overflow: hidden;
+}
+
+.living-data-universe__field,
+.living-data-universe__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.living-data-universe__field {
+  opacity: calc(var(--field-opacity, 0.5) * 0.9);
+  mix-blend-mode: screen;
+  background:
+    linear-gradient(115deg, transparent 0%, rgba(143, 168, 255, 0.05) 38%, transparent 68%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(247, 245, 239, 0.018) 0,
+      rgba(247, 245, 239, 0.018) 1px,
+      transparent 1px,
+      transparent 88px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(182, 161, 217, 0.014) 0,
+      rgba(182, 161, 217, 0.014) 1px,
+      transparent 1px,
+      transparent 88px
+    );
+  animation: field-breathe 18s ease-in-out infinite;
+  transition: opacity 2.4s ease;
+}
+
+.living-data-universe__vignette {
+  background:
+    radial-gradient(ellipse at center, transparent 0%, rgba(5, 6, 12, 0.35) 58%, rgba(3, 4, 10, 0.9) 100%),
+    linear-gradient(180deg, rgba(3, 4, 10, 0.15), rgba(3, 4, 10, 0.62));
+}
+
+@keyframes field-breathe {
+  0%, 100% {
+    opacity: 0.38;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.68;
+    transform: scale(1.03);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .living-data-universe__field {
+    animation: none;
+    opacity: 0.36;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(7, 8, 18, 0.65);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(182, 161, 217, 0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(182, 161, 217, 0.55);
+}
